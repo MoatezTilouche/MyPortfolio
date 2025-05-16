@@ -19,7 +19,7 @@ function Welcome() {
       backgroundColor: '#0A0025',
       height: '100vh',
       display: 'flex',
-      flexDirection: 'column', // Changed to column to stack elements vertically
+      flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'center',
       padding: '0 5%',
@@ -30,11 +30,11 @@ function Welcome() {
     },
     welcomeHeader: {
       color: 'white',
-      fontSize: '2.5em',
+      fontSize: window.innerWidth >= 1024 ? '2.5em' : '2em',
       fontWeight: 'bold',
       textAlign: 'center',
-      marginTop: '2rem',
-      marginBottom: '2rem',
+      marginTop: '1rem',
+      marginBottom: '1rem',
       fontFamily: "'Fira Code', monospace",
       background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
       WebkitBackgroundClip: 'text',
@@ -43,45 +43,55 @@ function Welcome() {
     },
     mainContent: {
       display: 'flex',
-      justifyContent: 'space-between',
+      flexDirection: window.innerWidth >= 1024 ? 'row' : 'column',
+      justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
+      gap: '1rem',
+      flex: '1',
+      maxHeight: 'calc(100vh - 200px)',
+      position: 'relative',
     },
     textContainer: {
       color: 'white',
       maxWidth: '700px',
-      padding: '20px',
-      flex: '1 1 50%',
+      padding: window.innerWidth >= 1024 ? '20px' : '10px',
+      flex: window.innerWidth >= 1024 ? '1 1 50%' : '0 1 auto',
+      textAlign: window.innerWidth >= 1024 ? 'left' : 'center',
     },
     animatedText: {
-      fontSize: window.innerWidth >= 1024 ? '1.8em' : '1em',
+      fontSize: window.innerWidth >= 1024 ? '1.8em' : '1.2em',
       fontWeight: '400',
-      lineHeight: '1.6',
+      lineHeight: '1.4',
       fontFamily: "'Fira Code', monospace",
     },
     imageContainer: {
-      flex: '1 1 50%',
+      flex: window.innerWidth >= 1024 ? '1 1 50%' : '0 1 auto',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      width: window.innerWidth >= 1024 ? 'auto' : '100%',
+      maxWidth: window.innerWidth >= 1024 ? '500px' : '300px',
+      margin: '0 auto',
     },
     image: {
-      width: window.innerWidth >= 1024 ? '80%' : '90%', // Increased size
-      maxWidth: '600px', // Increased max-width
+      width: '100%',
       height: 'auto',
       objectFit: 'cover',
       opacity: showImage ? 1 : 0,
       transform: showImage ? 'scale(1)' : 'scale(0.9)',
-      transition: 'opacity 2s ease-in-out, transform 2s ease-in-out',
-      aspectRatio: '1/1', // Square aspect ratio for better appearance
+      transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
+      aspectRatio: '1/1',
+      borderRadius: '15px',
     },
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.welcomeHeader}>
-      <br/>
+        <br/>
         Welcome to My Portfolio
+        
       </div>
       <div style={styles.mainContent}>
         <div style={styles.textContainer}>
@@ -97,16 +107,16 @@ function Welcome() {
             style={styles.image}
           />
         </div>
-        <div className="quote-container">
-          <div className="quote-frame">
-            <div className="quote-text">
-              "With great power comes great electricity bill"
-            </div>
-            <div className="quote-icons">
-              <FontAwesomeIcon icon={faBolt} className="quote-icon" />
-              <FontAwesomeIcon icon={faLightbulb} className="quote-icon" />
-              <FontAwesomeIcon icon={faPlug} className="quote-icon" />
-            </div>
+      </div>
+      <div className="quote-container">
+        <div className="quote-frame">
+          <div className="quote-text">
+            "With great power comes great electricity bill"
+          </div>
+          <div className="quote-icons">
+            <FontAwesomeIcon icon={faBolt} className="quote-icon" />
+            <FontAwesomeIcon icon={faLightbulb} className="quote-icon" />
+            <FontAwesomeIcon icon={faPlug} className="quote-icon" />
           </div>
         </div>
       </div>
