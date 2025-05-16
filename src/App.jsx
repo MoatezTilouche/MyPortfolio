@@ -1,16 +1,19 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import 'flowbite';
 
 import ResponsiveAppBar from "./components/Navbar";
-import Welcome from "./components/Welcome";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import Footer from "./components/Footer";
+import LoadingRoute from "./components/LoadingRoute";
 
 import "./App.css";
 import "./index.css";
-import Skills from "./components/skills";
+
+// Lazy load components
+const Welcome = lazy(() => import("./components/Welcome"));
+const Services = lazy(() => import("./components/Services"));
+const Skills = lazy(() => import("./components/skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
@@ -20,11 +23,11 @@ function App() {
 
       {/* Define routes for each section */}
       <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/services" id="services" element={<Services />} />
-        <Route path="/skills" element={<Skills/>} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Footer />} />
+        <Route path="/" element={<LoadingRoute component={Welcome} />} />
+        <Route path="/services" id="services" element={<LoadingRoute component={Services} />} />
+        <Route path="/skills" element={<LoadingRoute component={Skills} />} />
+        <Route path="/projects" element={<LoadingRoute component={Projects} />} />
+        <Route path="/contact" element={<LoadingRoute component={Footer} />} />
       </Routes>
     </Router>
   );

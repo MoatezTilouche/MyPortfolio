@@ -18,11 +18,7 @@ function ImageWithFallback({ src, alt, ...props }) {
     const basePath = `/${cleanPath}`.toLowerCase();
     const webpPath = basePath.replace(/\.(png|jpg|jpeg)$/, '.webp');
     
-    console.log('Processing image paths:', {
-      input: src,
-      webp: webpPath,
-      original: basePath
-    });
+    
     
     return [webpPath, basePath];
   };
@@ -47,10 +43,7 @@ function ImageWithFallback({ src, alt, ...props }) {
         checkImage(originalSrc)
       ]);
       
-      console.log('Image existence check:', {
-        webp: { path: webpSrc, exists: webpExists },
-        original: { path: originalSrc, exists: originalExists }
-      });
+     
 
       if (!webpExists && !originalExists) {
         console.error('Neither WebP nor original image exists:', {
@@ -98,10 +91,7 @@ function ImageWithFallback({ src, alt, ...props }) {
               }
             }}
             onLoad={() => {
-              console.log('Image loaded successfully:', {
-                src: originalSrc,
-                alt
-              });
+              
               setLoading(false);
             }}
             sx={{
@@ -159,7 +149,6 @@ function Skills() {
 
   // Log all image paths for debugging
   React.useEffect(() => {
-    console.log('All skill image paths:', allSkills.flat().map(skill => skill.image));
   }, []);
 
   const [currentPage, setCurrentPage] = useState(0);
