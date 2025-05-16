@@ -1,0 +1,84 @@
+.skills-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.skills-slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.skills-page {
+  flex: 0 0 100%; /* Each page takes full width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.logo-box {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-container:hover .logo-box {
+  transform: scale(1.05) rotateY(5deg);
+}
+
+.logo-container:hover .animated-logo {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.animated-logo {
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.animated-logo:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.MuiCard-root {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.MuiTypography-root {
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
